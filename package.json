@@ -1,0 +1,13 @@
+{
+  "name": "express-todo-test",
+  "version": "0.1.0",
+  "description": "Tiny Express Todo API used for mesh-six envbuilder smoke testing",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
