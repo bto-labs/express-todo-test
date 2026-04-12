@@ -35,7 +35,19 @@ app.delete("/todos/:id", (req, res) => {
   res.status(204).end();
 });
 
-const port = Number(process.env.PORT) || 3000;
-app.listen(port, () => {
-  console.log(`express-todo-test listening on :${port}`);
+app.put("/todos/:id/toggle", (req, res) => {
+  const id = Number(req.params.id);
+  const todo = todos.get(id);
+  if (!todo) return res.status(404).json({ error: "not found" });
+  todo.done = !todo.done;
+  res.json(todo);
 });
+
+if (require.main === module) {
+  const port = Number(process.env.PORT) || 3000;
+  app.listen(port, () => {
+    console.log(`express-todo-test listening on :${port}`);
+  });
+}
+
+module.exports = app;
